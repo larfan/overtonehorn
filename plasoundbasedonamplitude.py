@@ -1,4 +1,4 @@
-import multiprocessing,time
+import time
 import pygame
 import pyaudio
 import struct
