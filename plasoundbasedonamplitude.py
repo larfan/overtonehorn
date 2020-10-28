@@ -42,7 +42,7 @@ class record:
             self.amp=( sum_squares / count )**(1/2)
             
             print(self.amp)
-            if self.amp <=0.2:
+            if self.amp <=0.15:
                 return False
             else:
                 return True
