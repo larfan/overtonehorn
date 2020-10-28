@@ -2,10 +2,10 @@ import time
 import pygame
 import pyaudio
 import struct
-import numpy as np
+import os
+
 #just for devices
 import sounddevice as sd
-import os
 print(sd.query_devices())
 
 CHUNKSIZE = 1024 # fixed chunk size
@@ -23,7 +23,7 @@ pygame.mixer.init()
 chunk = 1024*4  
 class record:
     def __init__(self):
-        self.stream = p.open(format=pyaudio.paInt16, channels=1, rate=fs, input=True, frames_per_buffer=CHUNKSIZE,input_device_index=0)
+        self.stream = p.open(format=pyaudio.paInt16, channels=1, rate=fs, input=True, frames_per_buffer=CHUNKSIZE,input_device_index=4)
         self.SHORT_NORMALIZE=(1.0/32768.0)
        
     def amplitude(self):
@@ -39,7 +39,7 @@ class record:
                 # normalize it to 1.0
                 n = sample * self.SHORT_NORMALIZE
                 sum_squares += n*n
-            self.amp=np.sqrt( sum_squares / count )
+            self.amp=( sum_squares / count )**(1/2)
             
             print(self.amp)
             if self.amp <=0.2:
@@ -87,7 +87,7 @@ while True:
     else:
         pygame.mixer.pause()
         statussound=False
-    time.sleep(0.025)
+    #time.sleep(0.025)
 
 
 
