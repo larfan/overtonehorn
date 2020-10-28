@@ -5,12 +5,17 @@ import struct
 import numpy as np
 #just for devices
 import sounddevice as sd
+import os
 print(sd.query_devices())
 
 CHUNKSIZE = 1024 # fixed chunk size
 p = pyaudio.PyAudio()
 fs=44100
-filename='/home/larfan/Documents/PythonProgramming/overtone_horn/finalsoundsamples/2lamour.wav'
+#select file to play
+scriptdir=script_dir = os.path.dirname(__file__)
+realpath='finalsoundsamples/hornsound.wav'
+absfilepath=os.path.join(script_dir,realpath)
+filename=absfilepath
 #open 
 pygame.mixer.pre_init()
 pygame.mixer.init()
@@ -18,7 +23,7 @@ pygame.mixer.init()
 chunk = 1024*4  
 class record:
     def __init__(self):
-        self.stream = p.open(format=pyaudio.paInt16, channels=1, rate=fs, input=True, frames_per_buffer=CHUNKSIZE,input_device_index=4)
+        self.stream = p.open(format=pyaudio.paInt16, channels=1, rate=fs, input=True, frames_per_buffer=CHUNKSIZE,input_device_index=0)
         self.SHORT_NORMALIZE=(1.0/32768.0)
        
     def amplitude(self):
