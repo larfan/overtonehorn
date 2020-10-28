@@ -87,7 +87,7 @@ while True:
     else:
         pygame.mixer.pause()
         statussound=False
-    time.sleep(0.05)
+    time.sleep(0.025)
 
 
 
