@@ -13,7 +13,7 @@ p = pyaudio.PyAudio()
 fs=44100
 #select file to play
 scriptdir=script_dir = os.path.dirname(__file__)
-realpath='finalsoundsamples/hornsound.wav'
+realpath='finalsoundsamples/2lamour.wav'
 absfilepath=os.path.join(script_dir,realpath)
 filename=absfilepath
 #open 
