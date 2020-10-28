@@ -13,7 +13,7 @@ p = pyaudio.PyAudio()
 fs=44100
 #select file to play
 scriptdir=script_dir = os.path.dirname(__file__)
-realpath='finalsoundsamples/2lamour.wav'
+realpath='finalsoundsamples/3lamour.wav'
 absfilepath=os.path.join(script_dir,realpath)
 filename=absfilepath
 #open 
@@ -23,7 +23,7 @@ pygame.mixer.init()
 chunk = 1024*4  
 class record:
     def __init__(self):
-        self.stream = p.open(format=pyaudio.paInt16, channels=1, rate=fs, input=True, frames_per_buffer=CHUNKSIZE,input_device_index=4)
+        self.stream = p.open(format=pyaudio.paInt16, channels=1, rate=fs, input=True, frames_per_buffer=CHUNKSIZE,input_device_index=0)
         self.SHORT_NORMALIZE=(1.0/32768.0)
        
     def amplitude(self):
