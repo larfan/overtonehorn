@@ -13,7 +13,7 @@ p = pyaudio.PyAudio()
 fs=44100
 #select file to play
 scriptdir=script_dir = os.path.dirname(__file__)
-realpath='finalsoundsamples/2lamour.wav'
+realpath='finalsoundsamples/1lamour.wav'
 absfilepath=os.path.join(script_dir,realpath)
 filename=absfilepath
 #open 
@@ -66,7 +66,7 @@ class output:
         
 
 out=output()
-out.actualoutput()
+#out.actualoutput()
 
 timeend=time.time()-1
 print(timeend)
@@ -74,15 +74,14 @@ while True:
     if rec.amplitude() == True:
         if statussound == False:
             timedifference=time.time()-timeend  #apparently not in secs
-            print('Timediffernece: ', timedifference)
+            #print('Timediffernece: ', timedifference)
             if usedbefore == True and timedifference<1:         #timedifference<n in case of glitch in amplitude
                 pygame.mixer.unpause()
                 statussound=True
-                print('do you enter?')
                 
             else:
                 out.actualoutput()
-                print('Activating stream')
+                #print('Activating stream')
         timeend=time.time()     #last time mic's amplitude was high enough
     else:
         pygame.mixer.pause()
